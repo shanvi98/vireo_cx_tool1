@@ -1,0 +1,121 @@
+ticket_id,split,true_issue,true_category,hardware_defect
+TK-241702,dev,"distortion, static or crackling",Audio Quality,Y
+TK-254764,dev,return pickup not done,Returns & Refunds,N
+TK-244394,dev,battery drains fast,Charging & Battery,Y
+TK-249954,dev,battery drains fast,Charging & Battery,Y
+TK-243078,dev,battery drains fast,Charging & Battery,Y
+TK-243879,dev,coupon or discount not applied,Billing & Payments,N
+TK-246097,dev,change delivery address,Other,N
+TK-242865,dev,product or compatibility question,Product Enquiry,N
+TK-250054,dev,cancel order,Other,N
+TK-244801,dev,connection keeps dropping,Connectivity,U
+TK-253319,dev,battery drains fast,Charging & Battery,Y
+TK-254648,dev,product or compatibility question,Product Enquiry,N
+TK-240996,dev,wrong item delivered,Delivery & Shipping,N
+TK-244476,dev,repair or warranty claim follow-up,Warranty & Repair,Y
+TK-248598,dev,change delivery address,Other,N
+TK-253870,dev,cannot log in / OTP,Account & Login,N
+TK-244091,dev,order not delivered or delayed,Delivery & Shipping,N
+TK-245647,dev,product or compatibility question,Product Enquiry,N
+TK-248967,dev,device or case not charging,Charging & Battery,Y
+TK-244281,dev,product or compatibility question,Product Enquiry,N
+TK-252001,dev,invoice / GST bill,Billing & Payments,N
+TK-242435,dev,no sound / one side dead,Audio Quality,Y
+TK-240768,dev,cancel order,Other,N
+TK-244770,dev,product or compatibility question,Product Enquiry,N
+TK-240363,dev,return pickup not done,Returns & Refunds,N
+TK-243650,dev,invoice / GST bill,Billing & Payments,N
+TK-244329,dev,order not delivered or delayed,Delivery & Shipping,N
+TK-249364,dev,charged twice,Billing & Payments,N
+TK-246793,dev,firmware update stuck or failed,App & Firmware,N
+TK-242659,dev,cannot pair or connect,Connectivity,N
+TK-244582,dev,order not delivered or delayed,Delivery & Shipping,N
+TK-247029,dev,"payment taken, no order",Billing & Payments,N
+TK-248228,dev,battery drains fast,Charging & Battery,Y
+TK-250224,dev,return pickup not done,Returns & Refunds,N
+TK-244609,dev,device or case not charging,Charging & Battery,Y
+TK-249713,dev,battery drains fast,Charging & Battery,Y
+TK-241406,dev,return pickup not done,Returns & Refunds,N
+TK-248000,dev,battery drains fast,Charging & Battery,Y
+TK-253478,dev,return pickup not done,Returns & Refunds,N
+TK-245736,dev,wrong item delivered,Delivery & Shipping,N
+TK-247530,dev,change delivery address,Other,N
+TK-250108,dev,product or compatibility question,Product Enquiry,N
+TK-251486,dev,"payment taken, no order",Billing & Payments,N
+TK-249676,dev,"distortion, static or crackling",Audio Quality,Y
+TK-252103,dev,connection keeps dropping,Connectivity,U
+TK-240747,dev,cancel order,Other,N
+TK-247511,dev,"payment taken, no order",Billing & Payments,N
+TK-254272,dev,order not delivered or delayed,Delivery & Shipping,N
+TK-242017,dev,product or compatibility question,Product Enquiry,N
+TK-253214,dev,cannot pair or connect,Connectivity,N
+TK-241526,dev,firmware update stuck or failed,App & Firmware,N
+TK-245313,dev,app crashes or will not open,App & Firmware,N
+TK-251452,dev,device or case not charging,Charging & Battery,Y
+TK-250328,dev,"distortion, static or crackling",Audio Quality,Y
+TK-251755,dev,order not delivered or delayed,Delivery & Shipping,N
+TK-249262,dev,battery drains fast,Charging & Battery,Y
+TK-240707,dev,cancel order,Other,N
+TK-240205,dev,wrong item delivered,Delivery & Shipping,N
+TK-250779,dev,order not delivered or delayed,Delivery & Shipping,N
+TK-242637,dev,app crashes or will not open,App & Firmware,N
+TK-241137,dev,physical part broken,Warranty & Repair,Y
+TK-250559,dev,"payment taken, no order",Billing & Payments,N
+TK-251767,dev,order not delivered or delayed,Delivery & Shipping,N
+TK-246032,dev,refund not received,Returns & Refunds,N
+TK-249424,dev,damaged in transit,Delivery & Shipping,N
+TK-253606,dev,coupon or discount not applied,Billing & Payments,N
+TK-244986,dev,damaged in transit,Delivery & Shipping,N
+TK-241168,dev,order not delivered or delayed,Delivery & Shipping,N
+TK-245244,dev,wifi / speaker setup fails,Connectivity,N
+TK-248690,dev,connection keeps dropping,Connectivity,U
+TK-247266,dev,order not delivered or delayed,Delivery & Shipping,N
+TK-243677,dev,charged twice,Billing & Payments,N
+TK-252599,dev,order not delivered or delayed,Delivery & Shipping,N
+TK-246165,dev,return pickup not done,Returns & Refunds,N
+TK-243550,dev,cannot pair or connect,Connectivity,N
+TK-240999,dev,"distortion, static or crackling",Audio Quality,Y
+TK-242064,dev,charged twice,Billing & Payments,N
+TK-243914,dev,"payment taken, no order",Billing & Payments,N
+TK-242461,dev,repair or warranty claim follow-up,Warranty & Repair,Y
+TK-240811,dev,cannot pair or connect,Connectivity,N
+TK-250009,holdout,order not delivered or delayed,Delivery & Shipping,N
+TK-241311,holdout,connection keeps dropping,Connectivity,U
+TK-241162,holdout,order not delivered or delayed,Delivery & Shipping,N
+TK-252984,holdout,return pickup not done,Returns & Refunds,N
+TK-246845,holdout,return pickup not done,Returns & Refunds,N
+TK-249872,holdout,cannot pair or connect,Connectivity,N
+TK-251511,holdout,refund not received,Returns & Refunds,N
+TK-246265,holdout,cancel order,Other,N
+TK-246765,holdout,order not delivered or delayed,Delivery & Shipping,N
+TK-249698,holdout,order not delivered or delayed,Delivery & Shipping,N
+TK-252052,holdout,change delivery address,Other,N
+TK-254256,holdout,charged twice,Billing & Payments,N
+TK-241160,holdout,battery drains fast,Charging & Battery,Y
+TK-249216,holdout,battery drains fast,Charging & Battery,Y
+TK-251013,holdout,cannot pair or connect,Connectivity,N
+TK-243723,holdout,"payment taken, no order",Billing & Payments,N
+TK-240935,holdout,refund not received,Returns & Refunds,N
+TK-245541,holdout,battery drains fast,Charging & Battery,Y
+TK-243440,holdout,cancel order,Other,N
+TK-252980,holdout,cannot log in / OTP,Account & Login,N
+TK-250027,holdout,order not delivered or delayed,Delivery & Shipping,N
+TK-252904,holdout,order not delivered or delayed,Delivery & Shipping,N
+TK-242803,holdout,repair or warranty claim follow-up,Warranty & Repair,Y
+TK-246341,holdout,order not delivered or delayed,Delivery & Shipping,N
+TK-240138,holdout,device or case not charging,Charging & Battery,Y
+TK-247568,holdout,change delivery address,Other,N
+TK-246047,holdout,order not delivered or delayed,Delivery & Shipping,N
+TK-246948,holdout,"payment taken, no order",Billing & Payments,N
+TK-246557,holdout,battery drains fast,Charging & Battery,Y
+TK-247988,holdout,battery drains fast,Charging & Battery,Y
+TK-250078,holdout,wrong item delivered,Delivery & Shipping,N
+TK-246401,holdout,return pickup not done,Returns & Refunds,N
+TK-249515,holdout,wrong item delivered,Delivery & Shipping,N
+TK-241485,holdout,wrong item delivered,Delivery & Shipping,N
+TK-249851,holdout,firmware update stuck or failed,App & Firmware,N
+TK-253077,holdout,order not delivered or delayed,Delivery & Shipping,N
+TK-243791,holdout,order not delivered or delayed,Delivery & Shipping,N
+TK-243983,holdout,damaged in transit,Delivery & Shipping,N
+TK-254359,holdout,order not delivered or delayed,Delivery & Shipping,N
+TK-250712,holdout,product or compatibility question,Product Enquiry,N

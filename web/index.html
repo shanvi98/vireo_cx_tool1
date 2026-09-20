@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vireo Support Digest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c2024; --muted:#6b6558; --paper:#f6f4ef; --panel:#efe9dd; --line:#dcd7cb; --track:#e7e1d3;
+    --accent:#b5652d; --accent-soft:#f0e0d0; --warn:#a5401f; --ok:#3d6b52;
+    --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+    --sans:"IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#ece8df; --muted:#a39d90; --paper:#1a1c1f; --panel:#24272b; --line:#34383d; --track:#2c3035;
+      --accent:#d98a52; --accent-soft:#3a2a1f; --warn:#e57a5a; --ok:#7fb393;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.5;}
+  .wrap{max-width:1080px; margin:0 auto; padding:2rem 16px 5rem;}
+  header.top{display:flex; justify-content:space-between; align-items:flex-end; border-bottom:2px solid var(--ink); padding-bottom:1rem; margin-bottom:1.6rem; flex-wrap:wrap; gap:.5rem;}
+  header.top h1{font-size:1.45rem; margin:0; font-weight:600;}
+  .sub{font-size:.78rem; color:var(--muted); font-family:var(--mono);}
+
+  .goal{border:1px solid var(--line); background:var(--panel); padding:1.1rem 1.2rem; margin-bottom:2rem;}
+  .goal h2{margin:0 0 .3rem; font-size:1rem;}
+  .goal .big{font-family:var(--mono); font-size:1.5rem;}
+  .goal p{margin:.3rem 0; font-size:.88rem;}
+  .goal-grid{display:grid; grid-template-columns:260px 1fr; gap:1.2rem; align-items:start;}
+  svg text{font-family:var(--mono); font-size:10px; fill:var(--muted);}
+
+  .kpis{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-bottom:2.2rem;}
+  .kpi{background:var(--paper); padding:1rem 1.1rem;}
+  .kpi .num{font-family:var(--mono); font-size:1.35rem; font-weight:500;}
+  .kpi .lbl{font-size:.76rem; color:var(--muted); margin-top:.2rem;}
+
+  section{margin-bottom:2.6rem;}
+  section > h2{font-size:1.02rem; font-weight:600; margin:0 0 .9rem; display:flex; align-items:baseline; justify-content:space-between; gap:1rem; flex-wrap:wrap;}
+  .meta{font-size:.78rem; font-weight:400; color:var(--muted); font-family:var(--mono);}
+  .cols{display:grid; grid-template-columns:1.3fr 1fr; gap:1.6rem;}
+  h3{font-size:.85rem; font-weight:600; margin:0 0 .5rem;}
+
+  table{width:100%; border-collapse:collapse; font-size:.85rem;}
+  th{text-align:left; font-weight:500; color:var(--muted); font-size:.72rem; padding:.4rem .5rem; border-bottom:1px solid var(--ink);}
+  td{padding:.42rem .5rem; border-bottom:1px solid var(--line); vertical-align:top;}
+  tr.team-row td{background:var(--panel); font-weight:600; font-size:.78rem;}
+  .num-col{font-family:var(--mono); text-align:right; white-space:nowrap;}
+  .table-scroll{overflow-x:auto;}
+
+  .bar-row{display:flex; align-items:center; gap:.6rem; margin:.28rem 0;}
+  .bar-row .name{width:210px; font-size:.8rem; flex-shrink:0;}
+  .bar-track{flex:1; height:14px; position:relative;}
+  .bar-fill{background:var(--accent); height:100%; border-radius:0 4px 4px 0; min-width:2px;}
+  .bar-row .val{width:110px; font-family:var(--mono); font-size:.76rem; text-align:right; flex-shrink:0; color:var(--muted);}
+  .up{color:var(--warn);} .down{color:var(--ok);}
+
+  .pill{display:inline-block; padding:0 .45rem; font-size:.7rem; border-radius:2px; font-family:var(--mono); background:var(--accent-soft); color:var(--warn);}
+  .note-box{background:var(--panel); border-left:3px solid var(--accent); padding:.7rem 1rem; font-size:.82rem; margin-bottom:1rem;}
+  .quote{font-size:.82rem; border-left:2px solid var(--line); padding:.2rem .7rem; margin:.4rem 0; color:var(--ink);}
+  .quote small{display:block; color:var(--muted); font-family:var(--mono); font-size:.7rem;}
+  select{font-family:var(--sans); font-size:.85rem; padding:.25rem .45rem; border:1px solid var(--ink); background:var(--paper); color:var(--ink);}
+  .tier2-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:.6rem;}
+  .tier2-card{border:1px solid var(--line); padding:.6rem .8rem;}
+  .tier2-card .stat{font-family:var(--mono); font-size:.75rem; color:var(--muted);}
+  .footnote{font-size:.74rem; color:var(--muted); margin-top:.6rem;}
+  #tip{position:fixed; pointer-events:none; background:var(--ink); color:var(--paper); font:12px var(--mono); padding:.3rem .5rem; border-radius:3px; display:none;}
+  @media (max-width:760px){ .kpis{grid-template-columns:repeat(2,1fr);} .goal-grid,.cols{grid-template-columns:1fr;} .bar-row .name{width:130px;} .bar-row .val{width:80px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>Vireo Support Digest</h1>
+    <div class="sub" id="genMeta">loading…</div>
+  </header>
+
+  <div class="goal" id="goal"></div>
+  <div class="kpis" id="kpis"></div>
+
+  <section>
+    <h2>What customers complained about <span class="meta"><select id="weekPicker" aria-label="Week"></select></span></h2>
+    <div id="weekBody"></div>
+  </section>
+
+  <section>
+    <h2>Agents <span class="meta"><select id="lbPicker" aria-label="Leaderboard period"></select></span></h2>
+    <div class="note-box" id="lbNote"></div>
+    <div class="table-scroll"><table>
+      <thead><tr><th>Agent</th><th>Site · shift</th><th class="num-col">Closed</th><th class="num-col">vs team median</th><th class="num-col">Came back ≤30d</th><th class="num-col">CSAT (n)</th></tr></thead>
+      <tbody id="lbBody"></tbody>
+    </table></div>
+    <h3 style="margin-top:1.5rem">Tier 2 · Escalations &amp; Warranty <span class="meta">measured on resolution days, never on volume (policy §6)</span></h3>
+    <div class="tier2-grid" id="tier2Grid"></div>
+  </section>
+
+  <section>
+    <h2>What the desk costs <span class="meta" id="costMeta"></span></h2>
+    <div class="cols">
+      <div><h3>Desk service cost by issue, per year</h3><div id="costByIssue"></div></div>
+      <div><h3>Money paid out, per year (not desk cost)</h3><div id="payouts"></div></div>
+    </div>
+  </section>
+</div>
+<div id="tip"></div>
+
+<script>
+const inr = n => '₹' + Math.round(n).toLocaleString('en-IN');
+const lakh = n => '₹' + (n/1e5).toFixed(1) + 'L';
+const pct = (n,d=1) => (n*100).toFixed(d) + '%';
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const tip = document.getElementById('tip');
+const showTip = (e, html) => { tip.innerHTML = html; tip.style.display = 'block'; tip.style.left = (e.clientX + 12) + 'px'; tip.style.top = (e.clientY + 12) + 'px'; };
+const hideTip = () => tip.style.display = 'none';
+
+fetch('dashboard_data.json').then(r => r.json()).then(render).catch(err => {
+  document.querySelector('.wrap').innerHTML = '<p style="font-family:monospace;color:var(--warn)">Could not load dashboard_data.json. Run <code>python run_pipeline.py</code>, then serve this folder with <code>python -m http.server 8000</code> (opening the file directly will not work). (' + esc(err) + ')</p>';
+});
+
+function bars(el, rows, max) {
+  el.innerHTML = rows.map(r => `<div class="bar-row"><div class="name">${r.name}</div>
+    <div class="bar-track"><div class="bar-fill" style="width:${Math.max(0.5, r.v / max * 100)}%"></div></div>
+    <div class="val">${r.label}</div></div>`).join('');
+}
+
+function goalChart(g) {
+  const W = 700, H = 170, P = {l: 34, r: 78, t: 10, b: 22};
+  const pts = g.weekly, n = pts.length;
+  const ymax = Math.max(0.35, ...pts.map(p => p.share)) , ymin = 0.1;
+  const x = i => P.l + i * (W - P.l - P.r) / (n - 1);
+  const y = v => P.t + (1 - (v - ymin) / (ymax - ymin)) * (H - P.t - P.b);
+  const path = pts.map((p, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(p.share).toFixed(1)).join('');
+  const grid = [0.15, 0.2, 0.25, 0.3].map(v => `<line x1="${P.l}" x2="${W-P.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${P.l-4}" y="${y(v)+3}" text-anchor="end">${v*100}%</text>`).join('');
+  const target = `<line x1="${P.l}" x2="${W-P.r}" y1="${y(g.target_share)}" y2="${y(g.target_share)}" stroke="var(--ok)" stroke-dasharray="4 3" stroke-width="1.5"/>
+    <text x="${W-P.r+4}" y="${y(g.target_share)+3}" style="fill:var(--ok)">target ${pct(g.target_share,0)}</text>`;
+  const last = pts[n-1];
+  const hits = pts.map((p, i) => `<rect class="hit" data-i="${i}" x="${x(i) - (W-P.l-P.r)/(2*(n-1))}" y="${P.t}" width="${(W-P.l-P.r)/(n-1)}" height="${H-P.t-P.b}" fill="transparent"/>`).join('');
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Weekly status-chaser share, last ${n} complete weeks">
+    ${grid}${target}
+    <path d="${path}" fill="none" stroke="var(--accent)" stroke-width="2"/>
+    <circle cx="${x(n-1)}" cy="${y(last.share)}" r="4" fill="var(--accent)" stroke="var(--panel)" stroke-width="2"/>
+    <text x="${x(n-1)+8}" y="${y(last.share)+3}" style="fill:var(--ink)">${pct(last.share)}</text>
+    <text x="${P.l}" y="${H-6}">${pts[0].week}</text><text x="${W-P.r}" y="${H-6}" text-anchor="end">${last.week}</text>
+    <line id="xh" y1="${P.t}" y2="${H-P.b}" stroke="var(--muted)" visibility="hidden"/>
+    ${hits}</svg>`;
+}
+
+function render(d) {
+  const m = d.meta, g = d.goal, cs = d.cost_summary, lb = d.leaderboard;
+  document.getElementById('genMeta').textContent = `data to ${m.data_cutoff} · classifier: ${m.classifier}` +
+    (m.llm_stats && m.llm_stats.llm_failed_fell_back ? ` · ${m.llm_stats.llm_failed_fell_back} LLM failures fell back to rules` : '');
+
+  // ---- goal
+  document.getElementById('goal').innerHTML = `<div class="goal-grid"><div>
+      <h2>Goal: take "where is my…?" contacts out of the queue</h2>
+      <div class="big">${pct(g.baseline_share)} → ${pct(g.target_share,0)}</div>
+      <p>${g.baseline_chasers} of ${g.baseline_tickets.toLocaleString('en-IN')} tickets in ${g.baseline_quarter} only asked where an order, pickup, refund or repair was.
+      Hitting ${pct(g.target_share,0)} removes ~${g.tickets_avoided_per_quarter} tickets a quarter, about <b>${inr(g.value_per_quarter_inr)} a quarter</b> in desk cost.</p>
+      <p class="sub">${Object.entries(g.baseline_by_issue).map(([k,v]) => `${esc(k)}: ${v}`).join(' · ')}</p>
+    </div><div id="goalChart">${goalChart(g)}</div></div>`;
+  const svg = document.querySelector('#goalChart svg'), xh = svg.querySelector('#xh');
+  svg.querySelectorAll('.hit').forEach(r => {
+    r.addEventListener('mousemove', e => { const p = g.weekly[+r.dataset.i]; const cx = +r.getAttribute('x') + +r.getAttribute('width')/2;
+      xh.setAttribute('x1', cx); xh.setAttribute('x2', cx); xh.setAttribute('visibility','visible');
+      showTip(e, `week of ${p.week}<br>${pct(p.share)} of ${p.tickets} tickets`); });
+    r.addEventListener('mouseleave', () => { xh.setAttribute('visibility','hidden'); hideTip(); });
+  });
+
+  // ---- KPIs
+  document.getElementById('kpis').innerHTML = `
+    <div class="kpi"><div class="num">${lakh(cs.service_cost_per_year_inr)}</div><div class="lbl">Desk service cost / year (contacts, transfers, SLA credits)</div></div>
+    <div class="kpi"><div class="num">${pct(cs.same_issue_repeat_rate)}</div><div class="lbl">Same-issue repeat contacts ≤30 days (loose count: ${pct(cs.loose_repeat_rate)})</div></div>
+    <div class="kpi"><div class="num">${lakh(cs.refunds_replacements_per_year_inr)}</div><div class="lbl">Refunds + replacements / year (paid out, mostly not desk cost)</div></div>
+    <div class="kpi"><div class="num" style="color:var(--warn)">${cs.policy_violations_refund_and_replacement.length}</div><div class="lbl">Tickets with refund AND replacement (policy §5 says escalate same day)</div></div>`;
+
+  // ---- weekly digest
+  const wp = document.getElementById('weekPicker');
+  d.weekly_digest.forEach((w, i) => wp.add(new Option(`week of ${w.week}${w.complete ? '' : ' (partial)'}`, i)));
+  const firstComplete = Math.max(0, d.weekly_digest.findIndex(w => w.complete));
+  const renderWeek = i => {
+    const w = d.weekly_digest[i], max = w.top_issues[0] ? w.top_issues[0].tickets : 1;
+    const rows = w.top_issues.map(t => {
+      const delta = t.tickets - t.prev_week, cls = delta > 0 ? 'up' : delta < 0 ? 'down' : '';
+      return {name: esc(t.issue) + (t.hardware ? ' <span class="pill">defect</span>' : ''), v: t.tickets,
+              label: `${t.tickets} <span class="${cls}">(${delta >= 0 ? '+' : ''}${delta})</span>`};
+    });
+    const src = Object.entries(w.classified_by).map(([k,v]) => `${v} ${k}`).join(', ');
+    document.getElementById('weekBody').innerHTML = `
+      ${w.complete ? '' : '<div class="note-box">Partial week: the export ends mid-week. Numbers are not comparable to full weeks.</div>'}
+      <p class="sub" style="margin:0 0 .8rem">${w.total_tickets} tickets · ${inr(w.service_cost_inr)} desk cost · ${pct(w.chaser_share)} status chasers · ${pct(w.same_issue_repeat_rate)} same-issue repeats · ${pct(w.angry_share)} angry · classified by: ${src}</p>
+      <div class="cols"><div><h3>Top issues (change vs previous week)</h3><div id="wkBars"></div></div>
+      <div><h3>Hardware faults the intake tag missed</h3>
+        ${w.hidden_defects.length ? '<table>' + w.hidden_defects.map(h => `<tr><td>${esc(h.ticket_id)}</td><td>${esc(h.issue)}<br><span class="sub">${esc(h.product)} · tagged "${esc(h.tag)}"</span></td></tr>`).join('') + '</table>' : '<p class="sub">None this week.</p>'}
+        <h3 style="margin-top:1rem">In their words (angriest, most recent)</h3>
+        ${w.quotes.map(q => `<div class="quote">${esc(q.text)}<small>${esc(q.ticket_id)} · ${esc(q.issue)}</small></div>`).join('') || '<p class="sub">No angry messages.</p>'}
+      </div></div>`;
+    bars(document.getElementById('wkBars'), rows, max);
+  };
+  wp.value = firstComplete; wp.addEventListener('change', e => renderWeek(+e.target.value)); renderWeek(firstComplete);
+
+  // ---- leaderboard
+  document.getElementById('lbNote').innerHTML = `Agents are compared <b>only within their own team</b>: a voice agent and a chat agent do not close the same kind of work.
+    An agent closes about ${lb.avg_closed_per_agent_week.toFixed(1)} tickets in a typical week, so a single week's ranking is mostly noise
+    (week-to-week rank correlation ${lb.week_to_week_rank_corr.toFixed(2)}; ${lb.distinct_weekly_leaders} different agents were "#1" over the last ${lb.weeks.length - 1} weeks).
+    The 12-week view is the one to act on. "Came back ≤30d" = share of their closed tickets where the customer returned about the same issue (desk average ${pct(lb.desk_bounce_rate)}), a check on closing fast by closing badly.`;
+  const lp = document.getElementById('lbPicker');
+  lb.weeks.forEach(k => lp.add(new Option(k.startsWith('last_') ? 'last 12 complete weeks' : 'week of ' + k, k)));
+  const renderLb = k => {
+    let html = '', team = null;
+    lb.by_week[k].forEach(r => {
+      if (r.team !== team) { team = r.team; html += `<tr class="team-row"><td colspan="6">${esc(team)} · median ${r.team_median}</td></tr>`; }
+      html += `<tr><td>${esc(r.agent_name)}</td><td class="sub">${esc(r.site)} · ${esc(r.shift)}</td>
+        <td class="num-col">${r.tickets_closed}</td><td class="num-col">${pct(r.vs_team_median,0)}</td>
+        <td class="num-col">${r.bounce_rate == null ? '—' : pct(r.bounce_rate,0)}</td>
+        <td class="num-col">${r.avg_csat == null ? '—' : r.avg_csat.toFixed(1)} (${r.csat_n})</td></tr>`;
+    });
+    document.getElementById('lbBody').innerHTML = html || '<tr><td colspan="6">No data.</td></tr>';
+  };
+  lp.addEventListener('change', e => renderLb(e.target.value)); renderLb(lb.weeks[0]);
+  document.getElementById('tier2Grid').innerHTML = lb.tier2_summary.map(r => `<div class="tier2-card"><div>${esc(r.agent_name)}</div>
+    <div class="stat">${r.cases_resolved} cases · median ${r.median_resolution_days.toFixed(1)} days</div>
+    <div class="stat">came back ≤30d: ${r.bounce_rate == null ? '—' : pct(r.bounce_rate,0)}</div></div>`).join('');
+
+  // ---- costs
+  document.getElementById('costMeta').textContent = `${cs.total_tickets.toLocaleString('en-IN')} tickets over ${cs.months_covered} months, annualised`;
+  const ci = Object.entries(cs.service_cost_by_issue).slice(0, 12);
+  bars(document.getElementById('costByIssue'), ci.map(([k, v]) => ({name: esc(k), v, label: lakh(v)})), ci[0][1]);
+  const yr = 12 / cs.months_covered;
+  const po = cs.refunds_by_reason.map(r => ({name: esc(r.refund_reason_code), v: r.inr * yr, label: lakh(r.inr * yr)}))
+    .concat([{name: 'replacements (unit + ₹340)', v: cs.replacements.inr * yr, label: lakh(cs.replacements.inr * yr)}])
+    .sort((a, b) => b.v - a.v);
+  bars(document.getElementById('payouts'), po, po[0].v);
+}
+</script>
+</body>
+</html>
