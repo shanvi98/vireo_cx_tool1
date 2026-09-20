@@ -7,15 +7,15 @@
 
 ## 1. Candidate
 
-- Name: **[FILL IN]**
-- Email: **[FILL IN]**
-- Time spent: **[FILL IN, honest hours]**
+- Name: **[Shanvi Kumari]**
+- Email: **[shanvi298@gmail.com]**
+- Time spent: **[2 hours]**
 
 ## 2. Links
 
-- Code (zip / repo): `vireo_cx_tool.zip`, or **[FILL IN repo link]**
-- Screen recording (≤3 min): **[FILL IN link]**
-- Memo: `memo.docx` (one page)
+- Code (zip / repo): `vireo_cx_tool.zip`, or **[https://github.com/shanvi98/vireo_cx_tool1]**
+- Screen recording (≤3 min): **[https://drive.google.com/file/d/1TeHzAivs097J3oMoOkaxNOEJEf9zzZat/view?usp=drive_link]**
+- Memo: `https://docs.google.com/document/d/1729l2YePkyyafs8IMqOEsEB9E071zq7Q/edit?usp=drive_link&ouid=101871661173997960492&rtpof=true&sd=true` 
 
 ## 3. The business goal
 
